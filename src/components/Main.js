@@ -58,6 +58,7 @@ const Blog = styled(NavLink)`
 	@media only screen and (${device.md}) {
 		right: calc(1.35rem + 2vw);
 		font-size: 0.8rem;
+		top: 48%;
 	}
 `;
 
@@ -71,6 +72,7 @@ const Work = styled(NavLink)`
 	z-index: 1;
 
 	@media only screen and (${device.md}) {
+		top: 47%;
 		left: calc(1.35rem + 2vw);
 		font-size: 0.8rem;
 	}
@@ -224,7 +226,7 @@ const Main = () => {
 						whileHover={{ scale: 1.1 }}
 						whileTap={{ scale: 0.9 }}
 					>
-						Blog 📓
+						Blog
 					</motion.h3>
 				</Blog>
 
@@ -241,7 +243,7 @@ const Main = () => {
 						whileHover={{ scale: 1.1 }}
 						whileTap={{ scale: 0.9 }}
 					>
-						Work 💼
+						Work
 					</motion.h3>
 				</Work>
 
@@ -259,7 +261,7 @@ const Main = () => {
 							whileHover={{ scale: 1.1 }}
 							whileTap={{ scale: 0.9 }}
 						>
-							About 👦
+							About
 						</motion.h3>
 					</About>
 					<Skills to="/skills">
@@ -275,7 +277,7 @@ const Main = () => {
 							whileHover={{ scale: 1.1 }}
 							whileTap={{ scale: 0.9 }}
 						>
-							My Skills 🏆
+							My Skills
 						</motion.h3>
 					</Skills>
 				</BottomBar>

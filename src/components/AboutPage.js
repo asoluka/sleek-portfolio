@@ -7,6 +7,7 @@ import PowerButton from "../subComponents/PowerButton";
 import SocialIcons from "../subComponents/SocialIcons";
 import ParticleComponent from "../subComponents/ParticleComponent";
 import BigTitle from "../subComponents/BigTitle";
+import { device } from "../config/breakpoints";
 
 import astronaut from "../assets/Images/spaceman.png";
 
@@ -35,6 +36,10 @@ const Spaceman = styled.div`
 		width: 100%;
 		height: auto;
 	}
+
+	@media only screen and (${device.md}) {
+		top: 2rem;
+	}
 `;
 
 const Main = styled.div`
@@ -62,6 +67,11 @@ const Main = styled.div`
 	p {
 		margin-bottom: 2rem;
 	}
+
+	@media only screen and (${device.md}) {
+		height: auto;
+		top: 6rem;
+	}
 `;
 
 const AboutPage = () => {
@@ -75,18 +85,18 @@ const AboutPage = () => {
 
 				<Main>
 					<p>
-						I'm a front-end developer located in India. I love to create simple
-						yet beautiful websites with great user experience.
+						I'm a fullstack developer located in Nigeria. I love to create
+						simple yet beautiful websites with great user experience.
 					</p>
 					<p>
-						I'm interested in the whole frontend stack Like trying new things
-						and building great projects. I'm an independent freelancer and
-						blogger.
+						I'm interested in the whole web development stack, I like trying new
+						things and building great projects. I'm an independent freelancer
+						and very soon, I hope to start (v)blogging too.
 					</p>
 					<p>
-						I love to write blogs and read books. I believe everything is an Art
-						when you put your consciousness in it. You can connect with me via
-						social links.
+						I love to teach programming to newbies. I believe everything can be
+						learnt and enjoyed if approached the right weay. You can connect
+						with me via the social links.
 					</p>
 				</Main>
 
