@@ -8,6 +8,7 @@ import PowerButton from "../subComponents/PowerButton";
 import SocialIcons from "../subComponents/SocialIcons";
 import ParticleComponent from "../subComponents/ParticleComponent";
 import BigTitle from "../subComponents/BigTitle";
+import { device } from "../config/breakpoints";
 
 const Box = styled.div`
 	background-color: ${(props) => props.theme.body};
@@ -17,6 +18,10 @@ const Box = styled.div`
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
+
+	@media only screen and (${device.md}) {
+		flex-wrap: wrap;
+	}
 `;
 
 const Main = styled.div`
@@ -38,6 +43,12 @@ const Main = styled.div`
 	&:hover {
 		color: ${(props) => props.theme.body};
 		background-color: ${(props) => props.theme.text};
+	}
+
+	@media only screen and (${device.md}) {
+		width: 50vw;
+		height: auto;
+		margin-top: 70px;
 	}
 `;
 

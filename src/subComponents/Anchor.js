@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { Anchor, Link } from "../components/AllSvgs";
 import styled from "styled-components";
+import { device } from "../config/breakpoints";
 const Container = styled.div`
 	position: relative;
 `;
@@ -17,15 +18,23 @@ const Slider = styled.div`
 	.chain {
 		transform: rotate(135deg);
 	}
+
+	@media only screen and (${device.md}) {
+		right: 0;
+	}
 `;
 
 const PreDisplay = styled.div`
 	position: absolute;
 	top: 0;
 	right: 2rem;
+
+	@media only screen and (${device.md}) {
+		right: 1rem;
+	}
 `;
 
-const AnchorComponent = () => {
+const AnchorComponent = (props) => {
 	const ref = useRef(null);
 	const hiddenRef = useRef(null);
 
@@ -56,7 +65,7 @@ const AnchorComponent = () => {
 	return (
 		<Container>
 			<PreDisplay ref={hiddenRef} className="hidden">
-				<Anchor width={70} height={70} fill="currentColor" />
+				<Anchor width={props.width} height={props.height} fill="currentColor" />
 			</PreDisplay>
 			<Slider ref={ref}>
 				{[...Array(25)].map((x, id) => {

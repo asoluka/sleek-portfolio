@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { darkTheme } from "../components/Themes";
+import { device } from "../config/breakpoints";
 
 const Logo = styled.h1`
 	display: inline-block;
@@ -12,6 +13,12 @@ const Logo = styled.h1`
 	left: 2rem;
 	top: 2rem;
 	z-index: 3;
+
+	@media only screen and (${device.md}) {
+		left: 1rem;
+		top: 1rem;
+		font-size: 1.5rem;
+	}
 `;
 
 const LogoComponent = (props) => {

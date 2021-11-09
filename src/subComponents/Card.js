@@ -1,9 +1,11 @@
+import { motion } from "framer-motion";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { Github } from "../components/AllSvgs";
+import { device } from "../config/breakpoints";
 
-const Box = styled.li`
+const Box = styled(motion.li)`
 	width: 16rem;
 	height: 40vh;
 	background-color: ${(props) => props.theme.text};
@@ -21,6 +23,12 @@ const Box = styled.li`
 		background-color: ${(props) => props.theme.body};
 		color: ${(props) => props.theme.text};
 		border: 1px solid ${(props) => props.theme.text};
+	}
+
+	@media only screen and (${device.md}) {
+		border-radius: 0 25px 0 25px;
+		width: 12rem;
+		margin-right: 4rem;
 	}
 `;
 
@@ -80,10 +88,23 @@ const Git = styled(NavLink)`
 	}
 `;
 
+const Item = {
+	hidden: {
+		scale: 0,
+	},
+	show: {
+		scale: 1,
+		transition: {
+			type: "spring",
+			duration: 0.5,
+		},
+	},
+};
+
 const Card = (props) => {
-	const { name, description, tags, demo, github } = props.data;
+	const { id, name, description, tags, demo, github } = props.data;
 	return (
-		<Box>
+		<Box key={id} variants={Item}>
 			<Title>{name}</Title>
 			<Description>{description}</Description>
 			<Tags>

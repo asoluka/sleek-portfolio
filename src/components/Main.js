@@ -7,6 +7,8 @@ import PowerButton from "../subComponents/PowerButton";
 import SocialIcons from "../subComponents/SocialIcons";
 import { ReactIcon } from "./AllSvgs";
 import Intro from "./Intro";
+import { device } from "../config/breakpoints";
+import AppContext from "../state/AppContext";
 
 const MainContainer = styled.div`
 	background: ${(props) => props.theme.body};
@@ -37,6 +39,11 @@ const Contact = styled(NavLink)`
 	right: calc(1rem + 2vw);
 	text-decoration: none;
 	z-index: 1;
+
+	@media only screen and (${device.md}) {
+		top: 1.4rem;
+		font-size: 0.8rem;
+	}
 `;
 
 const Blog = styled(NavLink)`
@@ -47,6 +54,11 @@ const Blog = styled(NavLink)`
 	transform: rotate(90deg) translate(-50%, -50%);
 	text-decoration: none;
 	z-index: 1;
+
+	@media only screen and (${device.md}) {
+		right: calc(1.35rem + 2vw);
+		font-size: 0.8rem;
+	}
 `;
 
 const Work = styled(NavLink)`
@@ -57,6 +69,11 @@ const Work = styled(NavLink)`
 	transform: translate(-50%, -50%) rotate(-90deg);
 	text-decoration: none;
 	z-index: 1;
+
+	@media only screen and (${device.md}) {
+		left: calc(1.35rem + 2vw);
+		font-size: 0.8rem;
+	}
 `;
 
 const BottomBar = styled.div`
@@ -68,6 +85,10 @@ const BottomBar = styled.div`
 
 	display: flex;
 	justify-content: space-evenly;
+
+	@media only screen and (${device.md}) {
+		font-size: 0.8rem;
+	}
 `;
 
 const About = styled(NavLink)`
@@ -115,6 +136,10 @@ const Center = styled.button`
 		display: ${(props) => (props.click ? "none" : "inline-block")};
 		padding-top: 1rem;
 	}
+
+	@media only screen and (${device.md}) {
+		left: ${(props) => (props.click ? "90%" : "50%")};
+	}
 `;
 
 const DarkDiv = styled.div`
@@ -145,12 +170,24 @@ const Main = () => {
 				<SocialIcons theme={click ? "dark" : "light"} />
 
 				<Center click={click}>
-					<ReactIcon
-						onClick={handleClick}
-						width={click ? 100 : 150}
-						height={click ? 100 : 150}
-						fill="currentColor"
-					/>
+					<AppContext.Consumer>
+						{(pageWidth) => {
+							let width = "100";
+							click && pageWidth <= 768
+								? (width = 50)
+								: pageWidth <= 768
+								? (width = 100)
+								: (width = 150);
+							return (
+								<ReactIcon
+									onClick={handleClick}
+									width={width}
+									height={width}
+									fill="currentColor"
+								/>
+							);
+						}}
+					</AppContext.Consumer>
 					<span>click here</span>
 				</Center>
 
@@ -158,31 +195,86 @@ const Main = () => {
 					target="_blank"
 					to={{ pathname: "mailto:stracool9@gmail.com" }}
 				>
-					<motion.h3 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+					<motion.h3
+						initial={{
+							y: -200,
+							transition: { type: "spring", duration: 1.5, delay: 1 },
+						}}
+						animate={{
+							y: 0,
+							transition: { type: "spring", duration: 1.5, delay: 1 },
+						}}
+						whileHover={{ scale: 1.1 }}
+						whileTap={{ scale: 0.9 }}
+					>
 						Say Hi...
 					</motion.h3>
 				</Contact>
 
 				<Blog to="/blog">
-					<motion.h3 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+					<motion.h3
+						initial={{
+							y: -200,
+							transition: { type: "spring", duration: 1.5, delay: 1 },
+						}}
+						animate={{
+							y: 0,
+							transition: { type: "spring", duration: 1.5, delay: 1 },
+						}}
+						whileHover={{ scale: 1.1 }}
+						whileTap={{ scale: 0.9 }}
+					>
 						Blog
 					</motion.h3>
 				</Blog>
 
 				<Work to="/work" click={click}>
-					<motion.h3 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+					<motion.h3
+						initial={{
+							y: -200,
+							transition: { type: "spring", duration: 1.5, delay: 1 },
+						}}
+						animate={{
+							y: 0,
+							transition: { type: "spring", duration: 1.5, delay: 1 },
+						}}
+						whileHover={{ scale: 1.1 }}
+						whileTap={{ scale: 0.9 }}
+					>
 						Work
 					</motion.h3>
 				</Work>
 
 				<BottomBar>
 					<About to="/about" click={click}>
-						<motion.h3 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+						<motion.h3
+							initial={{
+								y: 200,
+								transition: { type: "spring", duration: 1.5, delay: 1 },
+							}}
+							animate={{
+								y: 0,
+								transition: { type: "spring", duration: 1.5, delay: 1 },
+							}}
+							whileHover={{ scale: 1.1 }}
+							whileTap={{ scale: 0.9 }}
+						>
 							About.
 						</motion.h3>
 					</About>
 					<Skills to="/skills">
-						<motion.h3 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+						<motion.h3
+							initial={{
+								y: 200,
+								transition: { type: "spring", duration: 1.5, delay: 1 },
+							}}
+							animate={{
+								y: 0,
+								transition: { type: "spring", duration: 1.5, delay: 1 },
+							}}
+							whileHover={{ scale: 1.1 }}
+							whileTap={{ scale: 0.9 }}
+						>
 							My Skills.
 						</motion.h3>
 					</Skills>

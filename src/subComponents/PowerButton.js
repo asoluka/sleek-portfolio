@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { PowerBtn } from "../components/AllSvgs";
+import { device } from "../config/breakpoints";
+import AppContext from "../state/AppContext";
 
 const Power = styled.button`
 	position: fixed;
@@ -32,13 +34,26 @@ const Power = styled.button`
 		text-decoration: none;
 		color: inherit;
 	}
+
+	@media only screen and (${device.md}) {
+		top: 1rem;
+		width: 2rem;
+		height: 2rem;
+	}
 `;
 
 const PowerButton = () => {
 	return (
 		<Power>
 			<NavLink to="/">
-				<PowerBtn width={30} height={30} fill="currentColor" />
+				<AppContext.Consumer>
+					{(pageWidth) => {
+						let width = pageWidth <= 768 ? 20 : 30;
+						return (
+							<PowerBtn width={width} height={width} fill="currentColor" />
+						);
+					}}
+				</AppContext.Consumer>
 			</NavLink>
 		</Power>
 	);

@@ -8,8 +8,11 @@ import { Blogs } from "../data/BlogData";
 import BlogComponent from "./BlogComponent";
 import AnchorComponent from "../subComponents/Anchor";
 import BigTitle from "../subComponents/BigTitle";
+import { motion } from "framer-motion";
 
-const MainContainer = styled.div`
+import { device } from "../config/breakpoints";
+
+const MainContainer = styled(motion.div)`
 	background-image: url(${img});
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -36,16 +39,41 @@ const Grid = styled.div`
 	display: grid;
 	grid-template-columns: repeat(2, minmax(calc(10rem + 15vw), 1fr));
 	grid-gap: calc(1rem + 2vw);
+
+	@media only screen and (${device.md}) {
+		grid-template-columns: repeat(1, minmax(calc(9rem + 15vw), 1fr));
+	}
 `;
+
+const container = {
+	hidden: {
+		opacity: 0,
+	},
+	show: {
+		opacity: 1,
+		transition: {
+			staggerChildren: 0.5,
+			duration: 0.5,
+		},
+	},
+};
 
 const BlogPage = () => {
 	return (
-		<MainContainer>
+		<MainContainer
+			variant={container}
+			initial="hidden"
+			animate="show"
+			exit={{
+				opacity: 0,
+				transition: { duration: 0.5 },
+			}}
+		>
 			<Container>
 				<LogoComponent />
 				<PowerButton />
 				<SocialIcons />
-				<AnchorComponent />
+				<AnchorComponent width="50" height="50" />
 				<Center>
 					<Grid>
 						{Blogs.map((blog) => (
