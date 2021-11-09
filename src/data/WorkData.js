@@ -6,6 +6,6 @@ export const Work = [
 			"This is the latest project that shows my proficiency with CSS and it was built for this application. I've had the ability to create stuffs like this but the designers are found wanting",
 		tags: ["react", "gsap", "styledComponents"],
 		demo: "/",
-		github: "https://github.com/codebucks27/Agency-website",
+		github: "https://github.com/asoluka/sleek-portfolio",
 	},
 ];
