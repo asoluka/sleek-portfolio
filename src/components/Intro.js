@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { device } from "../config/breakpoints";
 import Me from "../assets/Images/profile-img.png";
 
 const Box = styled(motion.div)`
@@ -29,6 +30,11 @@ const Box = styled(motion.div)`
 	background-size: 100% 2px;
 	border-left: 2px solid ${(props) => props.theme.body};
 	border-right: 2px solid ${(props) => props.theme.text};
+
+	@media only screen and (${device.md}) {
+		background: black;
+		border: 1px solid black;
+	}
 
 	z-index: 1;
 `;
@@ -76,7 +82,7 @@ const Intro = () => {
 				<Text>
 					<h1>Hi,</h1>
 					<h3>I'm SleekCodes.</h3>
-					<h6>I code simple yet beautiful websites.</h6>
+					<p>I code simple yet beautiful websites.</p>
 				</Text>
 			</SubBox>
 			<SubBox>
